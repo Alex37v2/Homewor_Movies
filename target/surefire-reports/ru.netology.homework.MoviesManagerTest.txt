@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: ru.netology.homework.MoviesManagerTest
--------------------------------------------------------------------------------
-Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.126 s <<< FAILURE! - in ru.netology.homework.MoviesManagerTest
-Fifa  Time elapsed: 0.058 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: array contents differ at index [0], expected: <Movie(id=1, name=Bladshot, imageUrl=http://, genre=actionMovie)> but was: <Movie(id=10, name=NumberFour, imageUrl=http://, genre=actionMovie)>
-	at ru.netology.homework.MoviesManagerTest.Fifa(MoviesManagerTest.java:57)
-
