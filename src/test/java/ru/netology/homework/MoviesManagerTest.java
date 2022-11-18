@@ -1,5 +1,6 @@
 package ru.netology.homework;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,8 +21,7 @@ class MoviesManagerTest {
     private Movie film10 = new Movie(10, "NumberFour", "http://", "actionMovie");
 
     @Test
-    public void inOrderOfAdditionMovies(){
-        MoviesManager manager = new MoviesManager();
+    public void addingMovie() {
         manager.addMovie(film1);
         manager.addMovie(film2);
         manager.addMovie(film3);
@@ -32,9 +32,31 @@ class MoviesManagerTest {
         manager.addMovie(film8);
         manager.addMovie(film9);
         manager.addMovie(film10);
-        Movie[] expected = {film1, film2, film3, film4, film5, film6, film7, film8, film9, film10};
+        Movie movieToAdd = new Movie(11, "NumberFive", "http://", "horrors");
+        manager.addMovie(movieToAdd);
+
+        Movie[] expected = {film1, film2, film3, film4, film5, film6, film7, film8, film9, film10, new Movie(11, "NumberFive", "http://", "horrors")};
         Movie[] actual = manager.getMovies();
-        assertArrayEquals(expected,actual);
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void inOrderOfAdditionMovies() {
+        manager.addMovie(film1);
+        manager.addMovie(film2);
+        manager.addMovie(film3);
+        manager.addMovie(film4);
+        manager.addMovie(film5);
+        manager.addMovie(film6);
+        manager.addMovie(film7);
+        manager.addMovie(film8);
+        manager.addMovie(film9);
+        manager.addMovie(film10);
+
+        Movie[] expected = manager.getMovies();
+        Movie[] actual = manager.findAll();
+
+        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -53,6 +75,43 @@ class MoviesManagerTest {
 
         Movie[] actual = manager.findLast();
         Movie[] expected = {film10, film9, film8};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void lastAddedMovies2() {
+        MoviesManager manager = new MoviesManager(10);
+        manager.addMovie(film1);
+        manager.addMovie(film2);
+        manager.addMovie(film3);
+        manager.addMovie(film4);
+        manager.addMovie(film5);
+        manager.addMovie(film6);
+        manager.addMovie(film7);
+        manager.addMovie(film8);
+        manager.addMovie(film9);
+        manager.addMovie(film10);
+
+        Movie[] actual = manager.findLast();
+        Movie[] expected = {film10, film9, film8, film7, film6, film5, film4, film3, film2, film1};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void lastAddedMovies3() {
+        MoviesManager manager = new MoviesManager(11);
+        manager.addMovie(film1);
+        manager.addMovie(film2);
+        manager.addMovie(film3);
+        manager.addMovie(film4);
+        manager.addMovie(film5);
+        manager.addMovie(film6);
+        manager.addMovie(film7);
+
+        Movie[] actual = manager.findLast();
+        Movie[] expected = {film7, film6, film5, film4, film3, film2, film1};
 
         assertArrayEquals(expected, actual);
     }

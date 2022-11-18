@@ -22,9 +22,9 @@ public class MoviesManager {
     }
 
     public Movie[] findAll() {
-        Movie[] tmp = new Movie[movies.length + 1];
+        Movie[] tmp = new Movie[movies.length];
         for (int i = 0; i < movies.length; i++) {
-            tmp[i] = movies[movies.length - 1 - i];
+            tmp[i] = movies[i];
         }
         return tmp;
     }
